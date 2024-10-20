@@ -104,8 +104,17 @@ The software components are organized into three main folders within the LWFS di
 4. Launch the website by executing:
    ```bash
    node server.js
-5. Open a web browser and navigate to the specified URL (typically http://localhost:3000 or as indicated in your server setup) to access the website interface.
-Troubleshooting
+5. Open a web browser and navigate to the specified URL always 0.0.0.0:9000 ) to access the website interface.
+### To Access From Other Devices
+1. Open cmd by typing it in Search
+2. There Type
+   ```bash
+   ipconfig
+3. After that You will get some numbers, Specifically look for **IPv4** Number like this
+   ```bash
+   IPv4 Address. . . . . . . . . . . : 192.168.x.x
+4. Then Type 192.168.x.x:9000 ( use it in another device Make Sure both is connected to same WiFi Router )
+5. If everything is done properly you will get a website with readings
 ### No readings from sensors:
 1. Check that all connections are secure and correctly configured.
 2. Ensure the LWFS Station is powered on and that the correct ports are selected in the Arduino IDE.
