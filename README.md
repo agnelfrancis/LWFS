@@ -115,6 +115,7 @@ The software components are organized into three main folders within the LWFS di
    IPv4 Address. . . . . . . . . . . : 192.168.x.x
 4. Then Type 192.168.x.x:9000 ( use it in another device Make Sure both is connected to same WiFi Router )
 5. If everything is done properly you will get a website with readings
+## Troubleshooting
 ### No readings from sensors:
 1. Check that all connections are secure and correctly configured.
 2. Ensure the LWFS Station is powered on and that the correct ports are selected in the Arduino IDE.
