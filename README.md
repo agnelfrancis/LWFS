@@ -46,14 +46,14 @@ This manual provides step-by-step instructions for connecting the DHT11 and BMP1
 ### Connecting DHT11 Sensor
 1. **Pin Configuration for DHT11:**
    - VCC (Pin 1): Connect to the 5V pin on the LWFS Station.
-   - DATA (Pin 2): Connect to a digital GPIO pin (e.g., D2).
+   - DATA (Pin 2): Connect to a A0 (e.g., A0 on Arduino).
    - GND (Pin 4): Connect to the GND pin on the LWFS Station.
 2. **Connection Diagram:**
    - Use jumper wires to connect the DHT11 sensor to the LWFS Station according to the pin configuration.
 
 ### Connecting BMP180 Sensor
 1. **Pin Configuration for BMP180:**
-   - VCC (Pin 1): Connect to the 3.3V pin on the LWFS Station.
+   - VIN (Pin 1): Connect to the 3.3V pin on the LWFS Station.
    - SDA (Pin 2): Connect to the SDA pin (e.g., A4 on Arduino).
    - SCL (Pin 3): Connect to the SCL pin (e.g., A5 on Arduino).
    - GND (Pin 4): Connect to the GND pin on the LWFS Station.
@@ -115,7 +115,6 @@ The software components are organized into three main folders within the LWFS di
    IPv4 Address. . . . . . . . . . . : 192.168.x.x
 4. Then Type 192.168.x.x:9000 ( use it in another device Make Sure both is connected to same WiFi Router )
 5. If everything is done properly you will get a website with readings
-## Troubleshooting
 ### No readings from sensors:
 1. Check that all connections are secure and correctly configured.
 2. Ensure the LWFS Station is powered on and that the correct ports are selected in the Arduino IDE.

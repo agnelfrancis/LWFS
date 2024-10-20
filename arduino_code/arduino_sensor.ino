@@ -4,8 +4,8 @@
 #include <Adafruit_BMP085_U.h>
 
 // DHT11 Configuration
-#define DHTPIN 2        // Pin where the DHT11 data pin is connected
-#define DHTTYPE DHT11   // DHT 11 sensor type
+#define DHTPIN A0      // Pin where the DHT11 data pin is connected (changed to A0)
+#define DHTTYPE DHT11  // DHT 11 sensor type
 DHT dht(DHTPIN, DHTTYPE);  // Initialize DHT11 sensor
 
 // BMP180 Configuration (I2C sensor)
