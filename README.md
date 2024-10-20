@@ -79,23 +79,23 @@ The software components are organized into three main folders within the LWFS di
 2. Install the required dependencies:
    ```bash
    pip install -r requirements.txt
-###Run the server:
+### Run the server:
 1. Open a terminal in the laptop_code folder.
 2. Execute the command:
    ```bash
    python server.py
-###Setting Up the Website
+### Setting Up the Website
 1. Navigate to the Website folder.
 2. Install Node.js dependencies:
 3. Open a terminal in the Website folder.
 4. Run the command:
    ```bash
    npm install
-###Run the website:
+### Run the website:
 1. Execute the command:
    ```bash
    node server.js
-###Running the System
+### Running the System
 1. Ensure all hardware connections are secure and the LWFS Station is powered on.
 2. Upload the Arduino code to the LWFS Station and ensure it is running correctly.
 3. Start the laptop server by executing:
@@ -106,30 +106,30 @@ The software components are organized into three main folders within the LWFS di
    node server.js
 5. Open a web browser and navigate to the specified URL (typically http://localhost:3000 or as indicated in your server setup) to access the website interface.
 Troubleshooting
-###No readings from sensors:
+### No readings from sensors:
 1. Check that all connections are secure and correctly configured.
 2. Ensure the LWFS Station is powered on and that the correct ports are selected in the Arduino IDE.
 ###Server not running:
 1. Verify that all required Python libraries are installed.
 2. Check for any error messages in the terminal and resolve them accordingly.
-###Website not loading:
+### Website not loading:
 1. Ensure that the Node.js server is running without errors.
 2. Double-check the URL being used to access the website.
-###Support and Contact Information
+### Support and Contact Information
 
 For further assistance, please contact our support team:
 Email: agnelfrancis2007@gmail.com
 
-##Appendix
-###Component Specifications
-####DHT11 Sensor:
+## Appendix
+### Component Specifications
+#### DHT11 Sensor:
 Operating Voltage: 3-5V
 Temperature Range: 0-50 °C
 Humidity Range: 20-90% RH
-####BMP180 Sensor:
+#### BMP180 Sensor:
 Operating Voltage: 1.8-3.6V
 Pressure Range: 300-1100 hPa
 Temperature Range: -40 to +85 °C
 
-###Made By Agnel Francis Olakkengil For Skill Day 2024
-####Other Mentions: Fahad, Adhithyan
+### Made By Agnel Francis Olakkengil For Skill Day 2024
+#### Other Mentions: Fahad, Adhithyan
