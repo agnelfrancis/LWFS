@@ -45,7 +45,14 @@ if %ERRORLEVEL% neq 0 (
 echo Python server started successfully!
 
 :: Navigate back to Codes folder
-cd /d "%~dp0Codes\Website" || (
+cd /d "%~dp0Codes" || (
+    echo Error: Could not navigate to "LWFS\Codes".
+    pause
+    exit /b 1
+)
+
+:: Navigate to Website folder
+cd "Website" || (
     echo Error: Could not navigate to "LWFS\Codes\Website".
     pause
     exit /b 1

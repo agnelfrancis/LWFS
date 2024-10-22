@@ -18,86 +18,95 @@
 
         body {
             font-family: 'DM Sans', sans-serif;
-            background-color: #1e1e2f;
-            color: #fff;
+            background-color: #000000;
+            color: #ffffff;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100vh;
-            margin: 0;
+            padding: 20px;
             flex-direction: column;
+            overflow: hidden; /* Prevent overflow of body */
         }
 
         .container {
             text-align: center;
-            max-width: 650px;
-            background: #292a3b;
-            padding: 40px 30px;
+            max-width: 600px;
+            height: 100%; /* Full height for scrolling */
+            background: #1a1a1a;
+            padding: 40px;
             border-radius: 15px;
-            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.5);
             animation: fadeIn 1s ease-in-out;
+            overflow-y: auto; /* Allow vertical scrolling */
         }
 
-        .container h1 {
-            font-size: 36px;
+        .temperature {
+            font-size: 100px; /* Increased size for temperature */
+            color: #4a90e2;
             margin-bottom: 20px;
-            color: #9b6bff;
+            cursor: pointer; /* Indicate that it's clickable */
+            border-radius: 10px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            transition: background 0.3s;
+        }
+
+        .temperature:hover {
+            background: rgba(255, 255, 255, 0.2); /* Highlight on hover */
         }
 
         .credits {
             font-size: 14px;
-            margin-bottom: 25px;
+            margin-top: 20px; /* Space above credits */
             color: #aaa;
         }
 
         .sensor-data, .calculations {
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 20px;
+            flex-direction: column; /* Stack vertically */
+            align-items: center;
+            gap: 20px; /* Space between items */
             margin-bottom: 30px;
         }
 
-        .sensor, .calculation {
-            background-color: #333445;
+        .sensor {
+            background-color: #2b2b2b;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
-            flex: 1 1 45%;
+            box-shadow: 0px 4px 8px rgba(255, 255, 255, 0.1);
+            width: 100%; /* Full width on mobile */
             transition: transform 0.3s ease, background-color 0.3s;
+            text-align: center;
         }
 
-        .sensor:hover, .calculation:hover {
-            transform: scale(1.05);
-            background-color: #3d3e55;
-        }
-
-        .sensor h2, .calculation h2 {
-            font-size: 22px;
+        .sensor h2 {
+            font-size: 24px;
             margin-bottom: 15px;
-            color: #ffd700;
+            color: #ffffff;
         }
 
-        .sensor p, .calculation p {
+        .sensor p {
             font-size: 20px;
-            color: #fff;
+            color: #cccccc;
         }
 
         .error-message {
             color: #ff6b6b;
-            background-color: #3c2a30;
+            background-color: #f9d7d7;
             padding: 15px;
             border-radius: 10px;
             font-size: 18px;
             margin-bottom: 25px;
-            box-shadow: 0px 8px 15px rgba(255, 0, 0, 0.1);
+            box-shadow: 0px 4px 8px rgba(255, 0, 0, 0.1);
             display: none;
             animation: shake 0.5s ease;
+            text-align: center;
         }
 
-        .sensor i, .calculation i {
+        .sensor i {
             font-size: 40px;
-            color: #9b6bff;
+            color: #4a90e2;
             margin-bottom: 15px;
         }
 
@@ -114,46 +123,88 @@
             100% { transform: translateX(0); }
         }
 
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .sensor, .calculation {
-                flex: 1 1 100%; 
-                margin-bottom: 20px;
+            .temperature {
+                font-size: 70px; /* Adjust size for mobile */
             }
 
-            .container {
-                padding: 25px;
+            .sensor h2 {
+                font-size: 20px;
             }
 
-            .container h1 {
-                font-size: 28px;
-            }
-
-            .sensor h2, .calculation h2 {
+            .sensor p {
                 font-size: 18px;
             }
 
-            .sensor p, .calculation p {
-                font-size: 16px;
+            .credits {
+                font-size: 12px; /* Smaller text for mobile */
             }
         }
+
+        /* Modal Styles */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0, 0, 0, 0.7); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #2b2b2b;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px; /* Max width for modal */
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .close {
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal-body {
+            margin-top: 15px;
+            color: #cccccc;
+            font-size: 20px;
+        }
+
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>Local Weather Telecast System (LWFS)</h1>
-        <p class="credits">Made by Agnel Francis Olakkengil</p>
+        <div class="temperature" id="temperature">-- °C</div>
+        <p class="credits">Made by Agnel, Fahad, Adithyan for Skill Day in Sarvodayam VHSS Aryampadam</p>
 
         <div id="error" class="error-message">
             <i class="fas fa-exclamation-triangle"></i> Arduino/Sensors/Connections are not working properly. Please check connections or open LWFS Working Box.
         </div>
 
         <div id="sensor-container" class="sensor-data" style="display:none;">
-            <div class="sensor">
-                <i class="fas fa-thermometer-half"></i>
-                <h2>Temperature</h2>
-                <p id="temperature">-- °C</p>
-            </div>
             <div class="sensor">
                 <i class="fas fa-tint"></i>
                 <h2>Humidity</h2>
@@ -167,22 +218,22 @@
         </div>
 
         <div class="calculations" id="calculations-container" style="display:none;">
-            <div class="calculation">
+            <div class="sensor">
                 <i class="fas fa-cloud-sun"></i>
                 <h2>Dew Point</h2>
                 <p id="dew-point">-- °C</p>
             </div>
-            <div class="calculation">
+            <div class="sensor">
                 <i class="fas fa-sun"></i>
                 <h2>Heat Index</h2>
                 <p id="heat-index">-- °C</p>
             </div>
-            <div class="calculation">
+            <div class="sensor">
                 <i class="fas fa-umbrella"></i>
                 <h2>Rain Chance</h2>
                 <p id="rain-chance">-- %</p>
             </div>
-            <div class="calculation">
+            <div class="sensor">
                 <i class="fas fa-mountain"></i>
                 <h2>Altitude</h2>
                 <p id="altitude">-- meters</p>
@@ -190,77 +241,82 @@
         </div>
     </div>
 
+    <!-- Modal -->
+    <div id="temperatureModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">Detailed Temperature Info</span>
+                <span class="close" id="closeModal">&times;</span>
+            </div>
+            <div class="modal-body">
+                <p>Current Temperature: <span id="detailed-temperature">-- °C</span></p>
+                <p>Additional Info: Accurate and rounded off temperature readings.</p>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Function to calculate Dew Point
-        function calculateDewPoint(temp, humidity) {
-            return temp - ((100 - humidity) / 5);
-        }
-
-        // Function to calculate Heat Index
-        function calculateHeatIndex(temp, humidity) {
-            return -42.379 + (2.04901523 * temp) + (10.14333127 * humidity) - 
-                   (0.22475541 * temp * humidity) - (6.83783 * Math.pow(10, -3) * Math.pow(temp, 2)) - 
-                   (5.481717 * Math.pow(10, -2) * Math.pow(humidity, 2)) + 
-                   (1.22874 * Math.pow(10, -3) * Math.pow(temp, 2) * humidity) + 
-                   (8.5282 * Math.pow(10, -4) * temp * Math.pow(humidity, 2)) - 
-                   (1.99 * Math.pow(10, -6) * Math.pow(temp, 2) * Math.pow(humidity, 2));
-        }
-
-        // Function to estimate the chance of rain (a basic formula)
-        function estimateRainChance(humidity, temp) {
-            return humidity > 80 && temp > 20 ? Math.min(100, humidity) : Math.max(0, humidity - 50);
-        }
-
-        // Function to calculate altitude based on atmospheric pressure
-        function calculateAltitude(pressure) {
-            const seaLevelPressure = 1013.25; // hPa
-            return (1 - Math.pow(pressure / seaLevelPressure, 0.190284)) * 145366.45; // altitude in feet
-        }
-
-        // Function to fetch sensor data from localhost:500
-        async function fetchData() {
+        async function fetchSensorData() {
             try {
-                const response = await fetch('http://localhost:500/data');
-                
-                if (!response.ok) throw new Error("Network response was not ok");
-                
+                const response = await fetch('/data'); // Replace with actual API endpoint
                 const data = await response.json();
 
-                // Update sensor data
-                const temperature = data.temperature;
+                // Assume API returns { temperature, humidity, pressure }
+                const temp = Math.round(data.temperature); // Round temperature
                 const humidity = data.humidity;
                 const pressure = data.pressure;
 
-                document.getElementById('temperature').textContent = `${temperature} °C`;
+                // Display rounded temperature at the top
+                document.getElementById('temperature').textContent = `${temp} °C`;
+
+                // Display other sensor data
                 document.getElementById('humidity').textContent = `${humidity} %`;
                 document.getElementById('pressure').textContent = `${pressure} hPa`;
 
-                // Perform calculations
-                const dewPoint = calculateDewPoint(temperature, humidity);
-                const heatIndex = calculateHeatIndex(temperature, humidity);
-                const rainChance = estimateRainChance(humidity, temperature);
-                const altitude = calculateAltitude(pressure).toFixed(2);
+                // Calculate and display dew point and heat index
+                const dewPoint = calculateDewPoint(temp, humidity);
+                const heatIndex = calculateHeatIndex(temp, humidity);
+                document.getElementById('dew-point').textContent = `${dewPoint.toFixed(2)} °C`;
+                document.getElementById('heat-index').textContent = `${heatIndex.toFixed(2)} °C`;
+                document.getElementById('rain-chance').textContent = `${(humidity / 100 * pressure / 1013.25 * 100).toFixed(2)} %`; // Example calculation
+                document.getElementById('altitude').textContent = `${(pressure / 1013.25 * 100).toFixed(2)} meters`; // Example calculation for altitude
 
-                // Update calculated data
-                document.getElementById('dew-point').textContent = `${dewPoint.toFixed(1)} °C`;
-                document.getElementById('heat-index').textContent = `${heatIndex.toFixed(1)} °C`;
-                document.getElementById('rain-chance').textContent = `${rainChance.toFixed(0)} %`;
-                document.getElementById('altitude').textContent = `${altitude} meters`;
-
-                // Show sensor and calculation containers
+                // Show sensor data
                 document.getElementById('sensor-container').style.display = 'flex';
                 document.getElementById('calculations-container').style.display = 'flex';
                 document.getElementById('error').style.display = 'none';
             } catch (error) {
-                console.error("Error fetching sensor data:", error);
+                console.error('Error fetching sensor data:', error);
                 document.getElementById('error').style.display = 'block';
                 document.getElementById('sensor-container').style.display = 'none';
                 document.getElementById('calculations-container').style.display = 'none';
             }
         }
 
-        // Fetch data every 5 seconds
-        setInterval(fetchData, 5000);
+        // Calculate Dew Point (placeholder function)
+        function calculateDewPoint(temp, humidity) {
+            return temp - ((100 - humidity) / 5); // Example calculation
+        }
+
+        // Calculate Heat Index (placeholder function)
+        function calculateHeatIndex(temp, humidity) {
+            return temp + (humidity / 100) * 10; // Example calculation
+        }
+
+        // Open modal and show detailed temperature
+        document.getElementById('temperature').addEventListener('click', function() {
+            document.getElementById('detailed-temperature').textContent = `${Math.round(parseFloat(this.textContent))} °C`;
+            document.getElementById('temperatureModal').style.display = 'flex';
+        });
+
+        // Close modal
+        document.getElementById('closeModal').addEventListener('click', function() {
+            document.getElementById('temperatureModal').style.display = 'none';
+        });
+
+        // Call fetchSensorData every 5 seconds
+        setInterval(fetchSensorData, 5000);
+        fetchSensorData(); // Initial call to fetch data
     </script>
 
 </body>
